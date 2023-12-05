@@ -42,13 +42,10 @@ part2 = None
 
 ### BEGIN SOLUTION
 
-from collections import defaultdict
-
-xs = inp.split("\n\n")
-seeds = list(map(int, xs[0].split(": ")[1].split(" ")))
+seeds = list(map(int, inp.split("\n\n")[0].split(": ")[1].split(" ")))
 maps = []
 
-for i, map_str in enumerate(xs[1:]):
+for map_str in inp.split("\n\n")[1:]:
     m = []
     for line in map_str.split("\n")[1:]:
         dest, src, map_range = tuple(map(int, line.split(" ")))
@@ -60,19 +57,19 @@ def apply_maps(ranges):
         new_ranges = []
         for start, end in ranges:
             for src, dest, map_range in m:
+                if src + map_range <= start:
+                    continue
                 if src > start:
                     new_start = min(end, src)
                     new_ranges.append((start, new_start))
-                    if new_start == end:
-                        break
                     start = new_start
-                if src + map_range <= start:
-                    continue
+                    if start == end:
+                        break
                 overlap_end = min(end, src + map_range)
                 new_ranges.append((dest + start - src, dest + overlap_end - src))
-                if overlap_end == end:
-                    break
                 start = overlap_end
+                if start == end:
+                    break
             else:
                 new_ranges.append((start, end))
         ranges = new_ranges
