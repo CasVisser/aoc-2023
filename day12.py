@@ -49,14 +49,3 @@ if len(sys.argv) > 1 and sys.argv[1] == "s1" and input("Submit part 1? (y/n) ").
     aocd.submit(part1, part="a", day=12, year=2023)
 if len(sys.argv) > 1 and sys.argv[1] == "s2" and input("Submit part 2? (y/n) ").lower() == "y":
     aocd.submit(part2, part="b", day=12, year=2023)
-
-# for line in lines:
-#     record, groups = line.split(" ")
-#     groups = list(map(int, groups.split(",")))
-#     missing_indexes = [i for i, r in enumerate(record) if r == "?"]
-#     def valid(replacements):
-#         fixed_record = list(record)
-#         for i, replacement in zip(missing_indexes, replacements): fixed_record[i] = replacement
-#         fixed_record_groups = [len(list(group)) for c, group in itertools.groupby(fixed_record) if c == "#"]
-#         return fixed_record_groups == groups
-#     part1 += len(list(filter(valid, itertools.product("#.", repeat=len(missing_indexes)))))
