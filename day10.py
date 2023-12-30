@@ -59,7 +59,7 @@ for y in range(h):
         elif inside_loop:
             part2 += 1
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")

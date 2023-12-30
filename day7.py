@@ -87,7 +87,7 @@ for rank, line in enumerate(lines):
     hand, bid = line.split()
     part2 += (rank + 1) * int(bid)
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")

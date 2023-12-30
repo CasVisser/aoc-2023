@@ -49,7 +49,7 @@ while i < len(chars):
 part1 = sum(n[0] for n, adj_coords in n_to_adj.items() if any(coords in symbols for coords in adj_coords))
 part2 = sum(prod(map(lambda t: t[0], adj_to_n[gear])) for gear in potential_gears if len(adj_to_n[gear]) == 2)
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")

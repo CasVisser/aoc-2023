@@ -56,7 +56,7 @@ start_positions = [node for node in m if node[-1] == "A"]
 cycle_times = [cycle_time(pos) for pos in start_positions]
 part2 = lcm(*cycle_times)
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")

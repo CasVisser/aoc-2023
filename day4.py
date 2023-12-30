@@ -32,7 +32,7 @@ for i, c in enumerate(cards):
     for j in range(i + 1, i + 1 + n_have_in_winning): multiplier[j] += multiplier[i]
     part2 += multiplier[i] * n_have_in_winning
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")

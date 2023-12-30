@@ -78,7 +78,7 @@ def apply_maps(ranges):
 part1 = min(r[0] for r in apply_maps([(seed, seed + 1) for seed in seeds]))
 part2 = min(r[0] for r in apply_maps([(seeds[i], seeds[i] + seeds[i + 1]) for i in range(0, len(seeds), 2)]))
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")

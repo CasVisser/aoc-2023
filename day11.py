@@ -39,7 +39,7 @@ for (r1, c1), (r2, c2) in combinations(galaxies, 2):
     part1 += sum(row_size[min(r1, r2):max(r1, r2)]) + sum(col_size[min(c1, c2):max(c1, c2)]) 
     part2 += sum(row_size2[min(r1, r2):max(r1, r2)]) + sum(col_size2[min(c1, c2):max(c1, c2)]) 
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")

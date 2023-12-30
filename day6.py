@@ -22,7 +22,7 @@ times, dists = map(lambda line: [int(n) for n in line.split()[1:]], inp.split("\
 part1 = prod(n_wins(t, d) for t, d in zip(times, dists))
 part2 = n_wins(int("".join(map(str, times))), int("".join(map(str, dists))))
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")

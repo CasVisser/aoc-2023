@@ -43,7 +43,7 @@ for i, game in enumerate(lines):
         part1 += i + 1
     part2 += r * g * b
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")

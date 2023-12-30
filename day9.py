@@ -31,7 +31,7 @@ for line in inp.split("\n"):
     part1 += difference_lists[0][-1]
     part2 += difference_lists[0][0]
 
-### END SOLTUION
+### END SOLUTION
 
 print(f"Part 1: {part1}")
 print(f"Part 2: {part2}")
