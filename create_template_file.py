@@ -17,7 +17,7 @@ def main():
     template = (
 f"""import aocd, sys
 
-inp = \"\"\"\"\"\"
+inp = r\"\"\"\"\"\"
 
 if len(sys.argv) > 1 and (sys.argv[1] == "gd" or sys.argv[1] == "s1" or sys.argv[1] == "s2"):
     inp = aocd.get_data(day={day}, year={year})
