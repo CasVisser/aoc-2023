@@ -19,13 +19,7 @@ part2 = None
 
 ### BEGIN SOLUTION
 
-import sys
-from collections import defaultdict
-
-sys.setrecursionlimit(10000)
-
 grid = inp.split("\n")
-successors = defaultdict(set)
 
 def get_start_beams():
     n_rows = len(grid)
