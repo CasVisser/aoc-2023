@@ -30,45 +30,25 @@ from collections import defaultdict
 from copy import deepcopy
 from math import prod
 
-def apply_rules(rules, p):
-    for rule in rules[:-1]:                       # ["a<2006:qkq", "m>2090:A"]
-        condition, destination = rule.split(":")  # ["a<2006", "qkq"]
-        category = condition[0]                   # "a"
-        boundary = int(condition[2:])             # 2006
-        condition_holds = (condition[1] == "<" and p[category] < boundary) or (condition[1] == ">" and p[category] > boundary)
-        if condition_holds: return destination    # "qkq"
-    return rules[-1]                              # "rfg"
-
 workflows_inp, parts_inp = map(str.split, inp.split("\n\n"))
+
+parts = [{c: int(v[2:]) for c, v in zip("xmas", part[1:-1].split(","))} for part in parts_inp]
 workflows = defaultdict(list)
 for l in workflows_inp:                               # runnings example: "px{a<2006:qkq,m>2090:A,rfg}"
     name, instructions = l.split("{")                 # ["px", "a<2006:qkq,m>2090:A,rfg}"]
     workflows[name] = instructions[:-1].split(",")    # ["a<2006:qkq", "m>2090:A", "rfg"]
 
-accepted = []
-for part in parts_inp:
-    p = dict()
-    for category in part[1:-1].split(","):
-        name, value = category.split("=")
-        p[name] = int(value)
-    workflow_name = "in"
-    while workflow_name in workflows:
-        workflow_name = apply_rules(workflows[workflow_name], p)
-    if workflow_name == "A": accepted.append(p)
-
-part1 = sum(sum(p.values()) for p in accepted)
-
 # yields (ranges, destination)
 def apply_rules_ranges(rules, ranges):            # ranges :: c:[start, end] incl.
-    for rule in rules[:-1]:                       # ["a<2006:qkq", "m>2090:A"]
+    for rule in rules[:-1]:                       # "a<2006:qkq"
         condition, destination = rule.split(":")  # ["a<2006", "qkq"]
-        category = condition[0]                   # "a"
+        category, comp = condition[:2]            # "a", "<"
         boundary = int(condition[2:])             # 2006
         ranges_in_boundary = deepcopy(ranges)
-        if condition[1] == "<":
+        if comp == "<":
             ranges_in_boundary[category][1] = boundary - 1
             ranges[category][0] = boundary
-        elif condition[1] == ">":
+        elif comp == ">":
             ranges_in_boundary[category][0] = boundary + 1
             ranges[category][1] = boundary
         yield (ranges_in_boundary, destination)
@@ -85,6 +65,7 @@ while len(todo) > 0:
     for t in apply_rules_ranges(workflows[destination], ranges):
         todo.append(t)
 
+part1 = sum(sum(p.values()) for p in parts if any(all(r[c][0] <= p[c] <= r[c][1] for c in "xmas") for r in accepted_ranges))
 part2 = sum(prod(r[1] - r[0] + 1 for r in ranges.values()) for ranges in accepted_ranges)
 
 ### END SOLUTION
