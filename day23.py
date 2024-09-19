@@ -36,15 +36,15 @@ from collections import defaultdict
 from tqdm import tqdm
 
 # Parse input
-grid = {complex(i, j): c # grid[row + column*j] is # or . or > ...
+grid = {complex(i, j): c # grid[row + column*j] is . or > or ^ or ...
         for i, line in enumerate(inp.split()) 
-        for j, c in enumerate(line)}
+        for j, c in enumerate(line)
+        if c != "#"}
 start = 0 + 1j
 goal = complex(inp.count("\n"), inp.index("\n") - 2)
 
 def get_all_neighbors(pos):
-    return {pos + d for d in [1, -1, 1j, -1j]
-            if pos + d in grid and grid[pos + d] != "#"}
+    return {pos + d for d in [1, -1, 1j, -1j] if pos + d in grid}
 
 # Use for part 1
 # def get_neighbors(pos):
