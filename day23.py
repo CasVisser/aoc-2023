@@ -47,13 +47,13 @@ def get_all_neighbors(pos):
     return {pos + d for d in [1, -1, 1j, -1j] if pos + d in grid}
 
 # Use for part 1
-# def get_neighbors(pos):
-#     return {pos + d for d, c in [(1, "v"), (-1, "^"), (1j, ">"), (-1j, "<")]
-#             if pos + d in grid and grid[pos + d] in [".", c]}
+def get_neighbors(pos):
+    return {pos + d for d, c in [(1, "v"), (-1, "^"), (1j, ">"), (-1j, "<")]
+            if pos + d in grid and grid[pos + d] in [".", c]}
 
 # Use for part 2
-def get_neighbors(pos):
-    return get_all_neighbors(pos)
+# def get_neighbors(pos):
+#     return get_all_neighbors(pos)
 
 # A successor is a junction (or the goal)
 def get_successors(pos):
